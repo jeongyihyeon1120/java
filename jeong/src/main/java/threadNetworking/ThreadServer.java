@@ -44,8 +44,10 @@ class userThread extends Thread {
                 if(output.substring(output.length() - 1).equals("0")) {
                 	ID = output.substring(0, output.length() - 1);
                 }else {
-                	System.out.println(ID + "> " + output);	
-                	cnj.conn(ID, output);
+                	if(output.equals("Yes")) {   		
+                		System.out.println(ID + "> " + output);	
+                		cnj.conn(ID, output);
+                	}
 				}
             }
         } catch (IOException e) {

@@ -1,14 +1,7 @@
 package threadNetworking;
 
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import io.socket.client.IO;
 import io.socket.client.Socket;
-import org.json.JSONObject;
-
-import javax.swing.*;
-import java.awt.*;
-import java.net.URISyntaxException;
 
 
 /**
@@ -23,15 +16,18 @@ import java.net.URISyntaxException;
  * @author : yhyeon
  * @version : v1.0
  */
+
 public class ConnectNodeJs {
 	
     static Socket socket;
 	
 	public void conn(String id, String status) {
+		
 		try {
-			socket = IO.socket("http://localhost:3100");
+			socket = IO.socket("http://localhost:8080");
+			
 			socket.on(Socket.EVENT_CONNECT, (Object... objects) -> {
-				socket.emit("joinRoom",id, status);
+				socket.emit("joinRoom", id, status);
 			});
 			socket.connect();
 		} catch (Exception e) {
