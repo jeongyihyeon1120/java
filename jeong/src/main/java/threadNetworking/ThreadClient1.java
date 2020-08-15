@@ -1,4 +1,4 @@
-package threadNetworking; 
+package threadNetworking;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
