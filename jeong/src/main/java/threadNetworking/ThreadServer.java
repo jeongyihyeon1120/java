@@ -131,7 +131,7 @@ public class ThreadServer {
 
 		try {
 			MSS = new ServerSocket();
-			MSS.bind(new InetSocketAddress(InetAddress.getLocalHost(), 4040));
+			MSS.bind(new InetSocketAddress(InetAddress.getLocalHost(), 30001));
 
 			System.out.println("--SERVER Close : input num");
 			System.out.println("--SERVER Waiting...");
