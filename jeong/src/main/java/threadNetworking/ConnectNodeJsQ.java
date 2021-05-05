@@ -23,7 +23,7 @@ import java.util.concurrent.TimeoutException;
 
 public class ConnectNodeJsQ {
 
-	private final static String QUEUE_NAME = "hello";
+	private final String QUEUE_NAME = "hello";
 	
 	public void connectionQ(String id, String status, String check) throws IOException, TimeoutException {
 		ConnectionFactory factory = new ConnectionFactory();

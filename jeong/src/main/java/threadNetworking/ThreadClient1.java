@@ -44,7 +44,7 @@ public class ThreadClient1 {
 			System.out.print("Login? (enter num): ");
 			String temp = input.nextLine() + "0";
 
-			CS.connect(new InetSocketAddress(InetAddress.getLocalHost(), 4040));
+			CS.connect(new InetSocketAddress("59.12.245.249", 30001));
 			System.out.println("SUCCESS");
 
 			byte[] as1 = temp.getBytes("UTF-8");

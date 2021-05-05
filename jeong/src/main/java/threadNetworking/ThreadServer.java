@@ -40,25 +40,10 @@ class userThread extends Thread {
 		this.SS = SS;
 	}
 	
-	public String Checking(ArrayList<String> check) {
+	public String Checking(String[] check) {
 		String notConnectStudents = "";
-		int count = 0;
-		if(check.size() == 0) return "ALL";
-		
-		for (int i = 0; i < class4; i++) {
-			if(count == check.size()) {
-				notConnectStudents = notConnectStudents + Integer.toString(i + 1) + " ";
-				continue;
-			}
-			if(i + 1 == Integer.parseInt(check.get(count))) {
-				count++;
-				continue;
-			}
-			else {
-				notConnectStudents = notConnectStudents + Integer.toString(i + 1) + " ";
-				System.out.println(i);
-				System.out.println(count);
-			}
+		for (int i = 0; i < check.length; i++) {
+			if(check[i] == null) notConnectStudents = notConnectStudents + (i + 1) + " ";
 		}
 		
 		return notConnectStudents;
@@ -77,19 +62,21 @@ class userThread extends Thread {
 					ID = output.substring(0, output.length() - 1);
 					int index = ID.indexOf("2");
 					getID = ID.substring(index + 3, index + 5);
-					pa.check.add(getID);
+//					pa.check.add(getID);
+					pa.checking[Integer.parseInt(getID) - 1] = getID;
 				} else {
 					System.out.println(ID + "> " + output);
 //                	cnj.conn(ID, output);
-					pa.check.sort(Comparator.naturalOrder());
-					String id = Checking(pa.check);
+//					pa.check.sort(Comparator.naturalOrder());
+					String id = Checking(pa.checking);
 					cnQ.connectionQ(ID, output, id);
 					
 				}
 			}
 		} catch (IOException | TimeoutException e) {
+//			pa.check.remove(getID);
+			pa.checking[Integer.parseInt(getID)] = null;
 			System.out.println("--" + ID + " user OUT");
-			pa.check.remove(getID);
 		}
 	}
 
@@ -138,6 +125,7 @@ public class ThreadServer {
 			connectThread cnt = new connectThread(MSS);
 			cnt.start();
 			int temp = input.nextInt();
+			
 
 		} catch (Exception e) {
 			System.out.println(e);

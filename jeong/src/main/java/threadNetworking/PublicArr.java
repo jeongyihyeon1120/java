@@ -15,7 +15,6 @@ import java.util.ArrayList;
  * @version : v1.0
  */
 public class PublicArr {
-
-	static ArrayList<String> check = new ArrayList<String>();
+	static String[] checking = new String[25];
 
 }
